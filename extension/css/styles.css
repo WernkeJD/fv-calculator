@@ -1,0 +1,51 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body styling */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;  /* White background */
+    color: #000000;  /* Black text */
+    padding: 20px;
+    text-align: center;
+    max-width: 300px;
+    margin: auto;
+  }
+  
+  /* Header styling */
+  h1 {
+    color: #000000;  /* Black text for the header */
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  /* Future Value Text Styling */
+  #future-value {
+    font-size: 20px;
+    color: #000000;  /* Black text for the future value */
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  /* Button styling */
+  button {
+    background-color: #1E90FF;  /* Blue background */
+    color: #ffffff;  /* White text */
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;  /* Darker blue on hover */
+  }
+  
+  

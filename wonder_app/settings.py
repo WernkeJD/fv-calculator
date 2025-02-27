@@ -38,12 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_browser_reload',
-
     'rest_framework',
     'core',
-
     'tailwind',
     'theme',
+    'corsheaders',
 ]
 
 TAILWIND_APP_NAME = 'theme'
@@ -63,6 +62,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "chrome-extension://YOUR_EXTENSION_ID",  # Use your extension's ID here
+    "http://localhost:8000",  # Django local server
 ]
 
 ROOT_URLCONF = 'wonder_app.urls'
