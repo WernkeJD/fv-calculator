@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'core',
     'tailwind',
     'theme',
+    'alpaca_integration',
     'corsheaders',
 ]
 
