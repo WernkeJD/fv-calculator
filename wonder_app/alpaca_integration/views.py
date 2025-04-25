@@ -25,7 +25,7 @@ def alpaca_login(request: HttpRequest) -> HttpResponse:
     print(f"{authorization_url}?{urlencode(params)}")
     return redirect(f"{authorization_url}?{urlencode(params)}")
 
-def alpaca_callback(request):
+def alpaca_callback(request: HttpRequest):
     # Extract the authorization code from the query parameters
     authorization_code = request.GET.get('code')
 
@@ -60,7 +60,7 @@ def alpaca_callback(request):
     return JsonResponse({'status': 'success', 'access_token': access_token})
     # return redirect(reverse('place_trade'))
 
-def place_trade(request) -> JsonResponse:
+def place_trade(request: HttpRequest) -> JsonResponse:
     try:
         if request.method == "POST":
             form = AlpacaInvestForm(request.POST)
