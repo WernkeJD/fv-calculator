@@ -7,6 +7,8 @@ from .serializer import UserSerializer
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.http import HttpRequest, HttpResponse, JsonResponse
+from alpaca_integration.forms import AlpacaInvestForm
 
 
 
@@ -51,9 +53,18 @@ def user_detail(request, pk):
     
 "Home Views"
 
-@login_required
 def home(request):
     return render(request, "home.html", {})
+
+@login_required
+def invest(request: HttpRequest) -> HttpResponse:
+    user = request.user
+    form = AlpacaInvestForm()
+    return render(request, "invest.html", {'form': form, 'user': user})
+
+@login_required
+def account_dashboard(request):
+    return render(request, "account_dashboard.html", {})
 
 """auth views"""
 def authView(request):

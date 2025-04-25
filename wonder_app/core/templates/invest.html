@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static tailwind_tags %}
+
+{%block content%}
+<html>
+    <body>
+        <h1>Place a Trade</h1>
+        <form method="POST" action="{% url 'alpaca_integration:place_trade' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Place Trade</button>
+        </form>
+    </body>
+</html>
+{%endblock%}

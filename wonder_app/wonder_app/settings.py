@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -151,3 +155,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "core:home"
 LOGOUT_REDIRECT_URL = "core:login"
+
+ALPACA_CLIENT_ID = os.environ.get('ALPACA_CLIENT_ID')
+ALPACA_CLIENT_SECRET = os.environ.get('ALPACA_CLIENT_SECRET')
+ALPACA_REDIRECT_URI = os.environ.get('ALPACA_REDIRECT_URI')

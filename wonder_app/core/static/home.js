@@ -26,6 +26,7 @@ document.getElementById('futureValueForm').addEventListener('submit', function(e
 
             document.getElementById('fv-heading').textContent = 'Future Value:'
             document.getElementById('result').textContent = formattedFV;
+            document.getElementById('investBtn').classList.remove('hidden');
         } else {
             document.getElementById('result').textContent = 'Error: ' + data.error;
         }
