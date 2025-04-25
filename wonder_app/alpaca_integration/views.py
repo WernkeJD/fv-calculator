@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.conf import settings
@@ -6,6 +7,8 @@ from django.urls import reverse
 import requests
 import alpaca_trade_api as tradeapi
 from .forms import AlpacaInvestForm
+from django.views.decorators.csrf import csrf_exempt
+
 
 
 
@@ -60,7 +63,11 @@ def alpaca_callback(request: HttpRequest):
     return JsonResponse({'status': 'success', 'access_token': access_token})
     # return redirect(reverse('place_trade'))
 
+@csrf_exempt
 def place_trade(request: HttpRequest) -> JsonResponse:
+
+    json_data = False
+
     try:
         if request.method == "POST":
             form = AlpacaInvestForm(request.POST)
@@ -68,7 +75,15 @@ def place_trade(request: HttpRequest) -> JsonResponse:
             if form.is_valid():
                 symbol = form.cleaned_data['symbol']
                 amount = form.cleaned_data['amount']
+            else:
+                data = json.loads(request.body)
+                symbol = data.get('symbol')
+                amount = data.get('amount')
 
+                if symbol and amount:
+                    json_data = True
+
+            if symbol and amount:
                 trade_url = "https://paper-api.alpaca.markets/v2/orders"
 
                 payload = {
@@ -89,12 +104,20 @@ def place_trade(request: HttpRequest) -> JsonResponse:
                 response = requests.post(trade_url, json=payload, headers=headers)
 
                 if response.status_code == 200:
-                    return redirect(reverse('core:home'))
+                    if json_data == False:
+
+                        return redirect(reverse('core:home'))
+                    else:
+                        return JsonResponse({"message": "Trade placed successfully", "data": response.json()})
                 else:
-                    return JsonResponse({"message": f"error got status code {response.status_code}", "logs": f"{response.text}"})
+                    return JsonResponse({"message": f"Error: {response.status_code}", "logs": response.text})
+            else:
+                return JsonResponse({"message": "Missing 'symbol' or 'amount' in POST data"}, status=400)        
+        else:
+            return JsonResponse({"message": "you must make a post request"}, status=400)
 
     except Exception as e:
-        return JsonResponse({"message": f"An unexpected error occured {e}"})
+        return JsonResponse({"message": f"An unexpected error occurred: {e}"})
 
 
 
