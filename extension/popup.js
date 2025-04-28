@@ -1,4 +1,8 @@
 document.getElementById('captureButton').addEventListener('click', () => {
+
+  document.getElementById('captureButton').style.display = 'none';
+  document.getElementById('investBtn').style.display = 'block';
+
   chrome.runtime.sendMessage({ action: 'captureVisibleTab' }, (response) => {
     if (response.screenshot) {
       const img = document.createElement('img');
@@ -41,6 +45,7 @@ function sendToOCR(imageData) {
       // Calculate the future value of the price in 20 years at 10% annual rate
       const futureValue = calculateFutureValue(totalPrice, 0.10, 30);
       console.log("Future Value: ", futureValue);
+      document.getElementById('starting_amount').textContent += "\n instead of paying: " + totalPrice;
       document.getElementById('output').textContent += "\n You could make: " + futureValue; // Display the future value
     }
   })
@@ -79,6 +84,34 @@ function calculateFutureValue(presentValue, rate, years) {
     currency: "USD" 
   }).format(fv);
 }
+
+document.getElementById('investBtn').addEventListener('click', () => {
+  const symbol = 'VOO';  // You can replace this with dynamic data from the page
+  const amount = '100.50';  // Replace this with the amount to invest (can also be dynamic)
+
+  fetch('http://localhost:8000/alpaca/place_trade/', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          symbol: symbol,
+          amount: amount
+      })
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (data.message === "Trade placed successfully") {
+          alert('Trade placed successfully');
+      } else {
+          alert('Error placing trade: ' + data.message);
+      }
+  })
+  .catch(error => {
+      console.error('Error:', error);
+      alert('There was an error processing the trade.');
+  });
+});
 
 
 

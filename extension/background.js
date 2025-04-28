@@ -24,6 +24,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     // Return true to indicate the response will be asynchronous
     return true;
   }
+  if (request.action === 'openPopup') {
+    // Open the popup by activating it
+    chrome.action.openPopup();
+  }
 });
 
 

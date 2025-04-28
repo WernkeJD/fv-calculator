@@ -1,10 +1,11 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 4,
   "name": "Eight Wonder",
   "version": "1.0",
   "permissions": [
     "activeTab",
-    "tabs"
+    "tabs",
+    "<all_urls>"
   ],
   "icons": {
     "16": "./media/8th_wonder_logo_16.png",

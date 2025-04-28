@@ -112,7 +112,7 @@ def place_trade(request: HttpRequest) -> JsonResponse:
                 else:
                     return JsonResponse({"message": f"Error: {response.status_code}", "logs": response.text})
             else:
-                return JsonResponse({"message": "Missing 'symbol' or 'amount' in POST data"}, status=400)        
+                return JsonResponse({"message": "Missing 'symbol' or 'amount' in POST data"}, status=400)       
         else:
             return JsonResponse({"message": "you must make a post request"}, status=400)
 
