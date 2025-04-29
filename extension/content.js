@@ -1,11 +1,11 @@
-window.onload = function() {
-  if (window.location.href.includes('checkout') || window.location.href.includes('cart')) {
-      // Simulate user interaction for opening the popup (use alternative methods if necessary)
-      chrome.runtime.sendMessage({ action: 'openPopup' });
-  } else {
-      console.log('Not on a checkout or cart page');
-  }
-};
+// window.onload = function() {
+//   if (window.location.href.includes('checkout') || window.location.href.includes('cart')) {
+//       // Simulate user interaction for opening the popup (use alternative methods if necessary)
+//       chrome.runtime.sendMessage({ action: 'openPopup' });
+//   } else {
+//       console.log('Not on a checkout or cart page');
+//   }
+// };
 
 // Send a message to the background script to capture the visible tab
 chrome.runtime.sendMessage({ action: 'captureVisibleTab' }, (response) => {

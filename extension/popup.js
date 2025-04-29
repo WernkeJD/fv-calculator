@@ -1,7 +1,7 @@
 document.getElementById('captureButton').addEventListener('click', () => {
 
-  document.getElementById('captureButton').style.display = 'none';
-  document.getElementById('investBtn').style.display = 'block';
+  document.getElementById('captureButton').classList.add('hidden');
+  document.getElementById('investBtn').classList.remove('hidden');
 
   chrome.runtime.sendMessage({ action: 'captureVisibleTab' }, (response) => {
     if (response.screenshot) {

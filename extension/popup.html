@@ -1,16 +1,78 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Eight Wonder</title>
-    <link rel="stylesheet" href="./css/styles.css">
-  </head>
-  <body>
-    <button class="button-86" id="captureButton">See Savings!</button>
-    <div id="starting_amount"></div>
-    <div id="output"></div>
-    <div class="investBtn" id="investBtn">Invest Instead!</div>
-    <script src="popup.js"></script>
-  </body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My Webcrumbs Plugin</title>
+        <style>
+            @import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
+            @import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap);
+        </style>
+        <script src="tailwindCDN.js"></script>
+        <script src="tailwind-config.js"></script>
+        <style>
+            @keyframes glowing {
+                0% {
+                    box-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+                }
+                50% {
+                    box-shadow: 0 0 20px rgba(79, 70, 229, 0.8);
+                }
+                100% {
+                    box-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+                }
+            }
+            .button-86 {
+                animation: glowing 2s infinite;
+            }
+            #starting_amount,
+            #output {
+                word-break: break-word;
+                transition: all 0.3s ease;
+            }
+            #starting_amount:not(:empty),
+            #output:not(:empty) {
+                border-left: 3px solid #4f46e5;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="webcrumbs">
+            <div class="w-[320px] p-4 bg-gradient-to-br from-slate-100 to-blue-50 rounded-xl shadow-lg font-sans">
+                <h1 class="text-xl font-bold text-primary-600 mb-4 text-center">Eight Wonder</h1>
+                <div class="flex flex-col items-center gap-4">
+                    <button
+                        id="captureButton"
+                        class="button-86 w-full py-3 px-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg relative overflow-hidden group"
+                    >
+                        <span class="relative z-10">See Savings!</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        ></span>
+                    </button>
+                    <div
+                        id="starting_amount"
+                        class="w-full p-3 bg-white bg-opacity-70 rounded-lg shadow-sm min-h-[40px] transition-all duration-300 hover:shadow-md"
+                    ></div>
+                    <div
+                        id="output"
+                        class="w-full p-4 bg-white bg-opacity-70 rounded-lg shadow-sm min-h-[60px] transition-all duration-300 hover:shadow-md"
+                    ></div>
+                    <button
+                        id="investBtn"
+                        class="investBtn hidden w-full py-3 px-6 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold rounded-lg shadow-md transform hover:scale-105 transition-all duration-300 hover:shadow-lg relative overflow-hidden group"
+                    >
+                        <span class="relative z-10">Invest Instead!</span>
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-teal-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        ></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script src="popup.js"></script>
+    </body>
 </html>
 
 
