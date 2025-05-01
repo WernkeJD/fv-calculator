@@ -39,6 +39,7 @@ function sendToOCR(imageData) {
 
       // Now, find the total price
       const totalPrice = findTotalPrice(text);
+      document.getElementById("totalPrice").value = totalPrice
       console.log("Total Price Found: ", totalPrice);
       // document.getElementById('output').textContent += "\nTotal Price: " + totalPrice; // Display the total price
 
@@ -87,7 +88,12 @@ function calculateFutureValue(presentValue, rate, years) {
 
 document.getElementById('investBtn').addEventListener('click', () => {
   const symbol = 'VOO';  // You can replace this with dynamic data from the page
-  const amount = '100.50';  // Replace this with the amount to invest (can also be dynamic)
+  let amount = document.getElementById('totalPrice').value;  // Replace this with the amount to invest (can also be dynamic)
+
+  // amount = parseFloat(amount);
+  amount = amount.replace('$', '');
+
+  console.log(amount)
 
   fetch('http://localhost:8000/alpaca/place_trade/', {
       method: 'POST',
@@ -96,7 +102,7 @@ document.getElementById('investBtn').addEventListener('click', () => {
       },
       body: JSON.stringify({
           symbol: symbol,
-          amount: amount
+          amount: amount,
       })
   })
   .then(response => response.json())
