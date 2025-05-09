@@ -15,8 +15,6 @@ db.sqlite3
 # Ignore log files
 *.log
 
-#ignore requirements file
-requirements.txt
 
 #ignore env
 .env
