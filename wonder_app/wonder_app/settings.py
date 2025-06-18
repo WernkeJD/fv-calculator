@@ -73,6 +73,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "chrome-extension://YOUR_EXTENSION_ID",  # Use your extension's ID here
     "http://localhost:8000",  # Django local server
+    "https://eighth-wonder.onrender.com"
 ]
 
 ROOT_URLCONF = 'wonder_app.urls'
