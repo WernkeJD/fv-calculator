@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-n2v*wxoe6(0oz=z5#u8!zu$zb%*tvlr15!@bx6u9ya_d6uool3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["django-05efa1667e4f4b5e-324465057392.us-central1.run.app", "eighth-wonder.onrender.com"]
+ALLOWED_HOSTS = ["eighth-wonder.onrender.com", "127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -72,7 +72,8 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "chrome-extension://YOUR_EXTENSION_ID",  # Use your extension's ID here
-    "http://localhost:8000",  # Django local server
+    "http://localhost",  # Django local server
+    "http://127.0.0.1",  # Django local server
     "https://eighth-wonder.onrender.com"
 ]
 

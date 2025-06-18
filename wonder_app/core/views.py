@@ -1,4 +1,6 @@
+import os
 from django.shortcuts import render, redirect
+import requests
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -9,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.http import HttpRequest, HttpResponse, JsonResponse
 from alpaca_integration.forms import AlpacaInvestForm
+from django.views.decorators.csrf import csrf_exempt
 
 
 
@@ -92,5 +95,32 @@ def FV(request):
     return Response({"future_value": future_value}, status=status.HTTP_200_OK)
 
 
+"""Policy Views"""
 
+def privacy_policy(request):
+    return render(request, "policies/privacy.html", {})
 
+"""extension views"""
+
+@csrf_exempt
+def ocr_proxy(request: HttpRequest) -> JsonResponse:
+    """
+    Proxy view for OCR requests, to hide api keys.
+    This view is used to handle OCR requests from the frontend extension.
+    """
+
+    if request.method == 'POST':
+        image_data = request.POST.get('base64Image')
+        if not image_data:
+            return JsonResponse({'error': 'No image data provided'}, status=400)
+        
+        api_key = os.environ.get('OCR_KEY')
+        payload = {
+            'base64Image': image_data,
+            'apiKey': api_key
+        }
+
+        ocr_response = requests.post("https://api.ocr.space/parse/image", data=payload)
+        return JsonResponse(ocr_response.json())
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=405)

@@ -19,12 +19,10 @@ document.getElementById('captureButton').addEventListener('click', () => {
 });
 
 function sendToOCR(imageData) {
-  const apiKey = "K81372540288957"; // Replace with your API key from OCR.space
   const formData = new FormData();
   formData.append("base64Image", imageData);
-  formData.append("apikey", apiKey);
 
-  fetch("https://api.ocr.space/parse/image", {
+  fetch("http://localhost:8000/api/ocr/", {
     method: "POST",
     body: formData
   })
@@ -127,4 +125,3 @@ document.getElementById('investBtn').addEventListener('click', () => {
 
 
 
-  

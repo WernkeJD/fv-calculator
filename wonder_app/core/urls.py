@@ -11,4 +11,6 @@ urlpatterns = [
     path('calculate-future-value/', views.FV, name='FV'),
     path('invest/', views.invest , name='invest_page'),
     path('accounts-dashboard/', views.account_dashboard , name='account_dashboard'),
+    path('policies/privacy/', views.privacy_policy, name='privacy_policy'),
+    path('api/ocr/', views.ocr_proxy, name='ocr_proxy'),
 ]
