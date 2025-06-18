@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-n2v*wxoe6(0oz=z5#u8!zu$zb%*tvlr15!@bx6u9ya_d6uool3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["django-05efa1667e4f4b5e-324465057392.us-central1.run.app"]
+ALLOWED_HOSTS = ["django-05efa1667e4f4b5e-324465057392.us-central1.run.app", "eighth-wonder.onrender.com"]
 
 
 # Application definition
