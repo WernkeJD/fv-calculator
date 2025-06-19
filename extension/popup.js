@@ -22,7 +22,7 @@ function sendToOCR(imageData) {
   const formData = new FormData();
   formData.append("base64Image", imageData);
 
-  fetch("http://localhost:8000/api/ocr/", {
+  fetch("https://eighth-wonder.onrender.com/api/ocr/", {
     method: "POST",
     body: formData
   })

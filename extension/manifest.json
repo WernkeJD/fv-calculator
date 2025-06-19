@@ -1,17 +1,17 @@
 {
-  "manifest_version": 4,
+  "manifest_version": 3,
   "name": "Eight Wonder",
-  "version": "3.0",
+  "version": "4.0",
   "permissions": [
     "activeTab",
     "tabs",
     "<all_urls>"
   ],
   "icons": {
-    "16": "./media/8th_wonder_logo_16.png",
-    "32": "./media/8th_wonder_logo_32.png",
-    "48": "./media/8th_wonder_logo_48.png",
-    "128": "./media/8th_wonder_logo_128.png"
+    "16": "/media/8th_wonder_logo_16.png",
+    "32": "/media/8th_wonder_logo_32.png",
+    "48": "/media/8th_wonder_logo_48.png",
+    "128": "/media/8th_wonder_logo_128.png"
   },
   "background": {
     "service_worker": "background.js"
@@ -26,17 +26,7 @@
     "default_popup": "popup.html"
   },
   "content_security_policy": {
-    "script-src": [
-      "'self'",
-      "https://cdn.tailwindcss.com",
-      "http://localhost:*",
-      "http://127.0.0.1:*"
-    ],
-    "style-src": [
-      "'self'",
-      "https://fonts.googleapis.com",
-      "https://cdn.tailwindcss.com"
-    ]
+    "extension_pages": "script-src 'self' https://cdn.tailwindcss.com http://localhost:* http://127.0.0.1:* https://eighth-wonder.onrender.com; object-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdn.tailwindcss.com;"
   },
   "web_accessible_resources": [
     {
