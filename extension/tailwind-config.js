@@ -1,5 +1,11 @@
 tailwind.config = {
-    content: ["./src/**/*.{html,js}"],
+    content: [
+        "./popup.html",
+        "./popup.js",
+        "./content.js",
+        "./background.js",
+        "./src/**/*.{html,js}"
+    ],
     theme: {
         name: "Bluewave",
         fontFamily: {
