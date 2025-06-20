@@ -93,7 +93,7 @@ document.getElementById('investBtn').addEventListener('click', () => {
 
   console.log(amount)
 
-  fetch('http://localhost:8000/alpaca/place_trade/', {
+  fetch('http://eighth-wonder.onrender.com/alpaca/place_trade/', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
